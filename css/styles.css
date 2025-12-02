@@ -1,0 +1,593 @@
+
+:root {
+  --color-azul-principal: #09408f;
+  --color-azul-claro: #e1eaf6;
+  --color-fondo-beige: #f7f5f0;
+  --color-texto-oscuro: #1f1f1f;
+  --color-texto-secundario: #555;
+  --color-marron-acento: #3b2c28;
+  --color-blanco: #ffffff;
+  --color-verde-whatsapp: #25d366;
+  --color-borde-suave: #e9eef2;
+  --transicion-suave: all 0.3s ease;
+}
+/* Becorat Financial destacado */
+.hero__titulo--principal {
+    color: #1db954;
+    font-size: 2em;    /* Cambia aquí el tamaño */
+    font-weight: bold;
+    line-height: 1.1;
+    display: inline-block;
+}
+
+.hero__titulo--accent {
+    font-size: 1em;    /* Cambia aquí el tamaño */
+    color: #222;
+    font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--color-blanco);
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--color-borde-suave);
+    transition: all 0.3s ease;
+}
+.navbar__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    transition: height 0.3s ease;
+}
+.navbar.scrolled .navbar__container {
+    height: 70px;
+}
+.navbar__logo-link {
+    text-decoration: none;
+}
+.navbar__logo-img {
+  max-width: 250px;
+  height: auto;
+  max-height: 74px; /* Controlamos la altura máxima */
+  display: block;
+  transition: transform 0.3s ease;
+}
+.navbar__links {
+    display: flex;
+    gap: 1.5rem;
+}
+.navbar__link {
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+    position: relative;
+    padding: 0.5rem 0;
+    text-decoration: none;
+}
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-azul-principal);
+    transition: width 0.3s ease;
+}
+.navbar__link:hover::after {
+    width: 100%;
+}
+.btn--navbar {
+    padding: 0.6rem 1.2rem;
+    background: var(--color-azul-principal);
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+.btn--navbar:hover {
+    background: #073372;
+}
+
+/* --- Componentes Reutilizables --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: var(--transicion-suave);
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.btn--whatsapp {
+  background: linear-gradient(45deg, #25d366, #128c7e);
+  color: var(--color-blanco);
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+.btn--whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+}
+.btn--outline {
+  border-color: var(--color-azul-principal);
+  color: var(--color-azul-principal);
+}
+.btn--outline:hover {
+  background-color: var(--color-azul-principal);
+  color: var(--color-blanco);
+  transform: translateY(-3px);
+}
+.btn__icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.7rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 4rem auto;
+}
+.section-header__titulo {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-texto-oscuro);
+  margin-bottom: 1rem;
+}
+.section-header__subtexto {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* --- Animaciones al Desplazar --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 1. HERO CON IMÁGENES DESTACADAS --- */
+.hero {
+  padding: 5rem 0;
+  overflow: hidden;
+}
+.hero__content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.hero__texto {
+  flex: 1 1 55%;
+  z-index: 2;
+}
+.hero__subheading {
+  display: inline-block;
+  background-color: var(--color-azul-claro);
+  color: var(--color-azul-principal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+.hero__titulo {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-texto-oscuro);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+.hero__titulo.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.hero__titulo--accent {
+  color: var(--color-azul-principal);
+}
+.hero__descripcion {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 95%;
+}
+.hero__botones {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.hero__featured-images {
+  flex: 1 1 45%;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+.hero__featured-image {
+  width: 180px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(40px) rotateY(-20deg);
+  transition: all 0.6s ease-out;
+}
+.hero__featured-image.active {
+  opacity: 1;
+  transform: translateY(0) rotateY(0);
+}
+.hero__featured-image:nth-child(1) { transition-delay: 0.4s; }
+.hero__featured-image:nth-child(2) { transition-delay: 0.6s; transform: translateY(20px) rotateY(-20deg); }
+.hero__featured-image:nth-child(3) { transition-delay: 0.8s; }
+
+/* --- Secciones Generales --- */
+.productos-premium { padding: 6rem 0; background-color: var(--color-fondo-beige); }
+.futuro-financiero { padding: 6rem 0; }
+.como-funciona { padding: 6rem 0; background-color: var(--color-fondo-beige); }
+.faq { padding: 6rem 0; }
+
+/* --- 2. PRODUCTOS PREMIUM --- */
+.productos-premium__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+}
+.producto-card-full {
+  background-color: var(--color-blanco);
+  border-radius: 12px;
+  border: 1px solid var(--color-borde-suave);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+.producto-card-full:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+.producto-card-full__img-wrapper img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+.producto-card-full__contenido {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.producto-card-full__contenido h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-texto-oscuro);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+.producto-card-full__contenido .stars { color: #ffc107; font-size: 0.9rem; }
+.producto-card-full__contenido .collection { font-size: 0.9rem; color: var(--color-texto-secundario); font-weight: normal; margin-bottom: 1rem; display: block; }
+.producto-card-full__descripcion { margin-bottom: 1.5rem; }
+.producto-card-full__boton-wrapper { margin-top: auto; }
+.btn--small { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+
+/* --- Acordeones (Productos y FAQ) --- */
+.accordion {
+    border-top: 1px solid var(--color-borde-suave);
+    margin-top: 1rem;
+}
+.faq .accordion {
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background-color: var(--color-blanco);
+}
+.accordion__button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto-secundario);
+    text-align: left;
+}
+.faq .accordion__button {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    color: var(--color-texto-oscuro);
+}
+.accordion__button:hover {
+    color: var(--color-azul-principal);
+}
+.accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.faq .accordion__content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--color-texto-secundario);
+    line-height: 1.7;
+}
+.accordion__list {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    list-style-type: none;
+}
+.accordion__chevron {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.4s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23555'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+    background-size: contain;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+.accordion__button[aria-expanded="true"] .accordion__chevron {
+    transform: rotate(180deg);
+}
+
+/* --- 3. FUTURO FINANCIERO (BENEFICIOS) --- */
+.futuro-financiero__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.beneficio-card {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--color-borde-suave);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background-color: var(--color-blanco);
+}
+.beneficio-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-azul-principal);
+  box-shadow: 0 10px 30px rgba(4, 52, 116, 0.08);
+}
+.beneficio-card__icono {
+  background-color: var(--color-azul-claro);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+.beneficio-card__icono img {
+  width: 38px;
+  height: 38px;
+}
+.beneficio-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-texto-oscuro);
+  margin-bottom: 0.75rem;
+}
+
+/* --- 4. CÓMO FUNCIONA --- */
+.como-funciona__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+}
+.como-funciona__grid::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background-image: linear-gradient(to right, var(--color-borde-suave) 50%, transparent 50%);
+    background-size: 10px 2px;
+    z-index: 0;
+}
+.paso-card {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-fondo-beige);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+.paso-card__numero {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-blanco);
+  border: 2px solid var(--color-azul-principal);
+  color: var(--color-azul-principal);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  transition: all 0.3s ease;
+}
+.paso-card:hover .paso-card__numero {
+    background-color: var(--color-azul-principal);
+    color: var(--color-blanco);
+    transform: scale(1.1);
+}
+.paso-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-texto-oscuro);
+  margin-bottom: 0.5rem;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--color-marron-acento);
+  color: var(--color-blanco);
+  padding-top: 5rem;
+  font-size: 0.95rem;
+}
+.footer__content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+.footer__logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.footer__texto {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  padding-right: 2rem;
+}
+.footer__col h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+.footer__col ul li {
+  margin-bottom: 0.5rem;
+}
+.footer__col ul li a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 0.2rem 0;
+}
+.footer__col ul li a:hover {
+  color: var(--color-blanco);
+}
+.footer__bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+
+
+
+/* --- Media Queries --- */
+@media (max-width: 992px) {
+  .navbar__links, .btn--navbar { display: none; }
+  .hero__content { flex-direction: column; text-align: center; }
+  .hero__texto { order: 1; align-self: center; }
+  .hero__featured-images { order: 2; margin-top: 2rem; }
+  .hero__botones { justify-content: center; }
+  .futuro-financiero__grid { grid-template-columns: 1fr; }
+  .como-funciona__grid { grid-template-columns: repeat(2, 1fr); }
+  .como-funciona__grid::before { display: none; }
+  .footer__content { grid-template-columns: 1fr; text-align: center; }
+  .footer__texto { padding-right: 0; }
+}
+
+@media (max-width: 768px) {
+    .section-header__titulo, .hero__titulo { font-size: 2.2rem; }
+}
+
+/* --- Layout para la sección de Vajillas --- */
+.vajillas { padding: 6rem 0; background-color: var(--color-fondo-beige); }
+
+/* 3 columnas en desktop, 2 en tablet, 1 en móvil */
+#vajillas .productos-premium__grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(340px, 1fr)) !important;
+  gap: 2.5rem !important;
+}
+#vajillas .productos-premium__grid > * { min-width: 0; } /* evita colapsos raros */
+
+@media (max-width: 992px) {
+  #vajillas .productos-premium__grid {
+    grid-template-columns: repeat(2, minmax(270px, 1fr)) !important;
+  }
+}
+@media (max-width: 640px) {
+  #vajillas .productos-premium__grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* aseguran que cada tarjeta ocupe todo el ancho de su celda */
+#vajillas .producto-card-full { width: 100%; }
+#vajillas .producto-card-full__img-wrapper img {
+  width: 100%; height: 280px; object-fit: cover;
+}
+.futuro-financiero__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.beneficio-card { width: 100%; height: 100%; }
+
+@media (max-width: 992px) {
+  .futuro-financiero__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .futuro-financiero__grid { grid-template-columns: 1fr; }
+}
+
+/* Aviso legal centrado y con buen contraste */
+.legal-disclaimer { background: #1f2937; }
+.legal-disclaimer__text {
+  margin: 0;
+  padding: 1rem 0 2rem;
+  text-align: center;
+  color: rgba(255,255,255,.75);
+  font-size: .95rem;
+  line-height: 1.6;
+}
+.legal-disclaimer__text a { color: #a5b4fc; text-decoration: underline; }
+.legal-disclaimer__text a:hover { color: #c7d2fe; }
