@@ -3,7 +3,7 @@
 
 ## 🚀 Demo en Vivo
 **Ver Proyecto Funcionando:** https://github.com/iamjlr7/becorat-financial-website.git
-*(Este enlace se genera en la pestaña Settings -> Pages después de subir el código.)*
+
 
 ---
 
